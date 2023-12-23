@@ -5,10 +5,10 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 const error = ref('');
 
 const signup = async (email, password, displayName) => {
-  try {
-    // Clear all the previous errors
-    error.value = null;
+  // Clear all the previous errors
+  error.value = null;
 
+  try {
     // Create user with email and password
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
@@ -17,9 +17,18 @@ const signup = async (email, password, displayName) => {
       await updateProfile(auth.currentUser, {
         displayName
       });
+    } else {
+      throw new Error('Could not create user');
     }
-    a;
-  } catch (error) {}
+
+    console.log(`${userCredential} has been created with displayName: ${displayName}`);
+
+    // Clear error for susccessful sign up
+    error.value = null;
+  } catch (err) {
+    // These two errors cant be the same
+    error.value = err.message;
+  }
 };
 
 const useSignup = () => {
