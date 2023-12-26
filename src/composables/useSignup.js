@@ -21,7 +21,7 @@ const signup = async (email, password, displayName) => {
       throw new Error('Could not create user');
     }
 
-    console.log(`${userCredential} has been created with displayName: ${displayName}`);
+    console.log(`${email} has been created with displayName: ${displayName}`);
 
     // Clear error for susccessful sign up
     error.value = null;

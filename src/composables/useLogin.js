@@ -9,14 +9,14 @@ const login = async (email, password) => {
   error.value = null;
 
   try {
-    const res = await signInWithEmailAndPassword(email, password);
+    const res = await signInWithEmailAndPassword(auth, email, password);
 
     // Clear error for susccessful sign in
     error.value = null;
     console.log('res', res);
     return res;
   } catch (err) {
-    error.value = 'Incorrect login credentials';
+    error.value = err.message;
   }
 };
 
