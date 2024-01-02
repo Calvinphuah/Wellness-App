@@ -6,8 +6,10 @@
     <h1>How are you feeling today?</h1>
     <div class="options">
       <div class="option amazing" @click="handleAmazing">Amazing</div>
+      <div class="option amazing" @click="handleAmazing">Good</div>
       <div class="option normal" @click="handleNormal">Normal</div>
-      <div class="option sad" @click="handleSad">Sad</div>
+      <div class="option sad" @click="handleSad">Bad</div>
+      <div class="option sad" @click="handleSad">Very Bad</div>
     </div>
     <h2>Not feeling it? <span>Skip</span></h2>
   </div>
