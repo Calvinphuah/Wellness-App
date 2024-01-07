@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="header">
       <button @click="changeMonth(-1)">Previous Month</button>
       <span>Month: {{ selectedMonth }}</span>
@@ -11,12 +11,15 @@
       >
         Next Month
       </button>
+      <div>
+        <p>User's Local Date: {{ currentLocalDate }}</p>
+      </div>
     </div>
-    <div>
-      <p>User's Local Date: {{ currentLocalDate }}</p>
-    </div>
-    <div v-for="day in daysOfMonth" :key="day">
-      <button>{{ day }}</button>
+
+    <div class="days-container">
+      <div class="day-button">
+        <button v-for="day in daysOfMonth" :key="day">{{ day }}</button>
+      </div>
     </div>
   </div>
 </template>
@@ -47,7 +50,6 @@ const daysOfMonth = computed(() => {
 });
 
 const days = daysOfMonth.value;
-// console.log('days', days.value);
 
 // Change month
 const changeMonth = (value) => {
@@ -74,6 +76,10 @@ const isNextMonthInFuture = computed(() => {
 </script>
 
 <style>
+.container {
+  padding: 30px;
+}
+
 .red-button {
   background-color: red;
   color: white;
