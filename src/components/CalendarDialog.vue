@@ -6,7 +6,9 @@
         <button @click="$emit('closeDialog')">X</button>
       </div>
       <div class="dialog-body">
-        <p>Dialog content goes here...</p>
+        <p>Selected Day in Another Component: {{ selectedDay }}</p>
+        <p>Selected Month in Another Component: {{ selectedMonth }}</p>
+        <p>Selected Year in Another Component: {{ selectedYear }}</p>
       </div>
     </div>
   </div>
@@ -15,12 +17,21 @@
 <script setup>
 import { ref } from 'vue';
 
+//Remember to defineProps
 const props = defineProps({
-  dialogVisible: Boolean
+  dialogVisible: Boolean,
+  selectedDay: Number,
+  selectedMonth: Number,
+  selectedYear: Number
 });
 
 // Access dialogVisible value from props
 const showDialog = ref(props.dialogVisible);
+
+// inject month
+const selectedMonth = ref(props.selectedMonth);
+const selectedYear = ref(props.selectedYear);
+const selectedDay = ref(props.selectedDay);
 </script>
 
 <style scoped>
